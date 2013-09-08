@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <name>hw1-zhiyul-typesystem</name>
+  <description>Type System Definition for 11-791 Fall 13 home work 1.</description>
+  <version>1.0</version>
+  <vendor>Zhiyu Li</vendor>
+  <types>
+    <typeDescription>
+      <name>edu.cmu.deiis.types.BaseAnnotation</name>
+      <description>Base annotation for this sample information system.</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>source</name>
+          <description>The annotator who made this annotation.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>confidence</name>
+          <description>How confident the annotator was when assigning this annotation. Range from 0 to 1, the higher the more confident.</description>
+          <rangeTypeName>uima.cas.Double</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>edu.cmu.deiis.types.Question</name>
+      <description>Annotation for the Question type instances.</description>
+      <supertypeName>edu.cmu.deiis.types.BaseAnnotation</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>edu.cmu.deiis.types.Answer</name>
+      <description>Annotation for the Answer type instances.</description>
+      <supertypeName>edu.cmu.deiis.types.BaseAnnotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>isCorrect</name>
+          <description>Indicate whether this answer is the correct answer. True means correct, false incorrect.</description>
+          <rangeTypeName>uima.cas.Boolean</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>edu.cmu.deiis.types.Token</name>
+      <description>Annotation for the Token type instances.</description>
+      <supertypeName>edu.cmu.deiis.types.BaseAnnotation</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>edu.cmu.deiis.types.AnswerScore</name>
+      <description>Annotation for the Answer Score type instances.</description>
+      <supertypeName>edu.cmu.deiis.types.BaseAnnotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>score</name>
+          <description>The score assigned to this answer. Range from 0 to 1, the higher the better.</description>
+          <rangeTypeName>uima.cas.Double</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>answer</name>
+          <description>Contains the corresponding answer.</description>
+          <rangeTypeName>edu.cmu.deiis.types.Answer</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>edu.cmu.deiis.types.NGram</name>
+      <description>Annotation for the NGram type instances. All the UniGram, BiGram and TriGram are treated as NGram here (they can be differentiated by the "source" feature).</description>
+      <supertypeName>edu.cmu.deiis.types.BaseAnnotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>elements</name>
+          <description>An array contains the token(s) in the NGram.</description>
+          <rangeTypeName>uima.cas.FSArray</rangeTypeName>
+          <elementType>edu.cmu.deiis.types.Token</elementType>
+          <multipleReferencesAllowed>true</multipleReferencesAllowed>
+        </featureDescription>
+      </features>
+    </typeDescription>
+  </types>
+</typeSystemDescription>
